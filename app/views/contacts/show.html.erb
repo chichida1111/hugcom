@@ -1,0 +1,69 @@
+<%=  "#{@contact.last_name_c_j}#{@contact.first_name_c_j}ちゃんのページ" %>
+
+ <div class="prototype__image">
+        <%= image_tag @contact.image, size: "350x350" %>
+</div>
+
+  <% if parent_user_signed_in? && current_parent_user.id == @contact.parent_user_id %>
+        <div class="prototype__manage">
+          <%= link_to "編集する", edit_contact_path(@contact.id), class: :prototype__btn %>
+          <%= link_to "削除する", contact_path(@contact.id), method: :delete, class: :prototype__btn %>
+        </div>
+
+      <%= form_with(model: @message, local: true) do |f| %>
+        <div class="field">
+          <%= f.label :attendance_id, "出欠席" %><br />
+          <%= f.text_field :attendance_id %>
+        </div>
+        <div class="field">
+          <%= f.label :body_temperature_id, "体温" %><br />
+          <%= f.text_field :body_temperature_id %>
+        </div>
+        <div class="field">
+          <%= f.label :pick_up_time_id, "お迎えの時間" %><br />
+          <%= f.text_field :pick_up_time_id %>
+        </div>
+        <div class="field">
+          <%= f.label :pick_up_person_id, "お迎えの人" %><br />
+          <%= f.text_field :pick_up_person_id %>
+        </div>
+        <div class="field">
+          <%= f.label :parent_comment, "特記事項" %><br />
+          <%= f.text_field :parent_comment %>
+        </div>
+        <div class="actions">
+          <%= f.submit "送信する", class: :form__btn  %>
+        </div>
+    <% end %>
+  <% end %> 
+
+ <% if teacher_user_signed_in? %>
+    <%= form_with(model: @message, local: true) do |f| %>
+        
+        <div class="field">
+          <%= f.label :physical_condition_id, "体調" %><br />
+          <%= f.text_field :physical_condition_id %>
+        </div>
+        <div class="field">
+          <%= f.label :school_lunch_id, "給食" %><br />
+          <%= f.text_field :school_lunch_id %>
+        </div>
+        <div class="field">
+          <%= f.label :defecation_id, "排便" %><br />
+          <%= f.text_field :defecation_id %>
+        </div>
+          <div class="field">
+          <%= f.label :teacher_comment, "特記事項" %><br />
+          <%= f.text_field :teacher_comment %>
+        </div>
+        <div class="field">
+          <%= f.label :image, "本日の写真" %><br />
+          <%= f.file_field :image %>
+        </div>
+
+      <div class="actions">
+          <%= f.submit "送信する", class: :form__btn  %>
+      </div>
+
+    <% end %>
+  <% end %> 

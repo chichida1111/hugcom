@@ -4,14 +4,18 @@ class TeacherUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
+         extend ActiveHash::Associations::ActiveRecordExtensions
+         belongs_to_active_hash :group
+       
+       
          with_options presence: true do
-          validates :email
-          validates :encrypted_password
-          validates :last_name_t_j
-          validates :first_name_t_j
-          validates :last_name_t_k
-          validates :first_name_t_k
-          validates :class_id
-        end
+           validates :email
+           validates :encrypted_password
+           validates :last_name_t_j
+           validates :first_name_t_j
+           validates :last_name_t_k
+           validates :first_name_t_k
+           validates :group_id
+         end
+         
 end

@@ -1,0 +1,39 @@
+<%= form_with(model: @contact, local: true) do |f|%>
+
+ <div class="field">
+    <%= f.label :group_id, "お子さんのクラス" %><br />
+   <%= f.collection_select(:group_id, Group.all, :id, :name, {}, {class:"select-box", id:"class"}) %>
+  </div>
+
+  
+
+  <div class="field">
+    <%= f.label :last_name_c_j, "お子さんの名前（名字）" %><br />
+    <%= f.text_field :last_name_c_j %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name_c_j, "お子様の名前（名前）" %><br />
+    <%= f.text_field :first_name_c_j, class: :form__text %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name_c_k, "お子さんの名字（カナ）" %><br />
+    <%= f.text_field :last_name_c_k %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name_c_k, "お子様の名前（カナ）" %><br />
+    <%= f.text_field :first_name_c_k, class: :form__text %>
+  </div>
+ 
+  <div class="field">
+    <%= f.label :image, "お子様の写真" %><br />
+    <%= f.file_field :image %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "保存する", class: :form__btn  %>
+  </div>
+<% end %>

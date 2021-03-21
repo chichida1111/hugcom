@@ -47,10 +47,9 @@
     <%= f.text_field :first_name_p_k, class: :form__text, placeholder:"例) ハナコ" %>
   </div>
     
-  <%#= f.collection_select(:ship_source_id, ShipSource.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
   <div class="field">
-    <%= f.label :class_id, "クラス名" %><br />
-    <%= f.text_field :class_id, class: :form__text, placeholder:"例) たんぽぽ" %>
+    <%= f.label :group_id, "お子さんのクラス" %><br />
+   <%= f.collection_select(:group_id, Group.all, :id, :name, {}, {class:"select-box", id:"class"}) %>
   </div>
 
 

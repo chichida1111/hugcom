@@ -3,16 +3,24 @@ class ParentUser < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+                  
+  has_one  :contact
 
-         with_options presence: true do
-          validates :email
-          validates :encrypted_password
-          validates :phone_number
-          validates :last_name_p_j
-          validates :first_name_p_j
-          validates :last_name_p_k
-          validates :first_name_p_k
-          validates :class_id
-        end
-        
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :group
+
+         
+         
+
+  with_options presence: true do
+    validates :email
+    validates :encrypted_password
+    validates :phone_number
+    validates :last_name_p_j 
+    validates :first_name_p_j
+    validates :last_name_p_k
+    validates :first_name_p_k
+    validates :group_id
+  end
+
 end

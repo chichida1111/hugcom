@@ -10,7 +10,7 @@ class DeviseCreateTeacherUsers < ActiveRecord::Migration[6.0]
       t.string  :first_name_t_j,     null: false
       t.string  :last_name_t_k,      null: false
       t.string  :first_name_t_k,     null: false
-      t.integer :class_id,           null: false
+      t.integer :group_id,           null: false
 
       ## Recoverable
       t.string   :reset_password_token
