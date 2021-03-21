@@ -27,6 +27,7 @@ before_action :parent_user_of_contact?, only: [:edit, :update, :destroy ]
     @parent_messages = @contact.parent_messages.order(id: :DESC)
     @teacher_message = TeacherMessage.new
     @teacher_messages = @contact.teacher_messages.order(id: :DESC)
+    @services = Service.all
   end
 
   def new

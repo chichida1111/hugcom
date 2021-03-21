@@ -24,4 +24,16 @@ Rails.application.routes.draw do
 
   post '/contacts/:id', to: 'teacher_messages#create'
 
+  resources :contacts do
+    resources :services, only: [:index, :new, :create ]
+  end
+
+  resources :parent_users, :only => [:show, :update]
+
+  resources :cards, only: [:new, :create]
+
+  resources :services, only: :order do
+    post 'order', on: :member
+  end
+  
 end
