@@ -1,0 +1,65 @@
++<h2>保護者　新規登録画面</h2>
+
+<%= form_with model: @parent_user, url: parent_user_registration_path, metod: :post, local: true do |f| %>
+
+  <%= render "parent_users/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email, "メールアドレス" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, "パスワード（6文字以上）" %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, "パスワード再入力" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_number, "電話番号" %><br />
+    <%= f.text_field :phone_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name_p_j, "保護者の名字" %><br />
+    <%= f.text_field :last_name_p_j, class: :form__text, placeholder:"例) 山田" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name_p_j, "保護者の名前" %><br />
+    <%= f.text_field :first_name_p_j, class: :form__text, placeholder:"例) 花子" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name_p_k, "保護者の名字(カナ）" %><br />
+    <%= f.text_field :last_name_p_k, class: :form__text, placeholder:"例) ヤマダ" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name_p_k, "保護者の名前(カナ）" %><br />
+    <%= f.text_field :first_name_p_k, class: :form__text, placeholder:"例) ハナコ" %>
+  </div>
+    
+  <%#= f.collection_select(:ship_source_id, ShipSource.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
+  <div class="field">
+    <%= f.label :class_id, "クラス名" %><br />
+    <%= f.text_field :class_id, class: :form__text, placeholder:"例) たんぽぽ" %>
+  </div>
+
+
+
+       
+
+
+
+  <div class="actions">
+    <%= f.submit "保護者　新規登録" %>
+  </div>
+<% end %>
