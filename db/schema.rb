@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_21_045221) do
+ActiveRecord::Schema.define(version: 2021_03_21_055607) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -45,6 +45,20 @@ ActiveRecord::Schema.define(version: 2021_03_21_045221) do
     t.index ["parent_user_id"], name: "index_contacts_on_parent_user_id"
   end
 
+  create_table "parent_messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "attendance_id", null: false
+    t.integer "body_temperature_id", null: false
+    t.integer "pick_up_time_id", null: false
+    t.integer "pick_up_person_id", null: false
+    t.text "parent_comment", null: false
+    t.bigint "parent_user_id", null: false
+    t.bigint "contact_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["contact_id"], name: "index_parent_messages_on_contact_id"
+    t.index ["parent_user_id"], name: "index_parent_messages_on_parent_user_id"
+  end
+
   create_table "parent_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -61,6 +75,19 @@ ActiveRecord::Schema.define(version: 2021_03_21_045221) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_parent_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_parent_users_on_reset_password_token", unique: true
+  end
+
+  create_table "teacher_messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "physical_condition_id", null: false
+    t.integer "school_lunch_id", null: false
+    t.integer "defecation_id", null: false
+    t.text "teacher_comment", null: false
+    t.bigint "teacher_user_id", null: false
+    t.bigint "contact_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["contact_id"], name: "index_teacher_messages_on_contact_id"
+    t.index ["teacher_user_id"], name: "index_teacher_messages_on_teacher_user_id"
   end
 
   create_table "teacher_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -82,4 +109,8 @@ ActiveRecord::Schema.define(version: 2021_03_21_045221) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "contacts", "parent_users"
+  add_foreign_key "parent_messages", "contacts"
+  add_foreign_key "parent_messages", "parent_users"
+  add_foreign_key "teacher_messages", "contacts"
+  add_foreign_key "teacher_messages", "teacher_users"
 end

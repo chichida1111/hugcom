@@ -1,0 +1,2 @@
+module ParentMessagesHelper
+end

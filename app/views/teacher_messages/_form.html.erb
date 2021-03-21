@@ -1,0 +1,25 @@
+<%= form_with(model:[@contact, @teacher_message] , local: true) do |f| %> 
+        <div class="field">
+          <%= f.label :physical_condition_id, "体調" %><br />
+          <%= f.collection_select(:physical_condition_id, PhysicalCondition.all, :id, :name, {}, {class:"select-box", id:"class"}) %>
+        </div>
+        <div class="field">
+          <%= f.label :school_lunch_id, "給食" %><br />
+          <%= f.collection_select(:school_lunch_id, SchoolLunch.all, :id, :name, {}, {class:"select-box", id:"class"}) %>
+        </div>
+        <div class="field">
+          <%= f.label :defecation_id, "排便" %><br />
+          <%= f.collection_select(:defecation_id, Defecation.all, :id, :name, {}, {class:"select-box", id:"class"}) %>
+        </div>
+          <div class="field">
+          <%= f.label :teacher_comment, "特記事項" %><br />
+          <%= f.text_field :teacher_comment %>
+        </div>
+        <div class="field">
+          <%= f.label :image, "本日の写真" %><br />
+          <%= f.file_field :image %>
+        </div>
+      <div class="actions">
+          <%= f.submit "送信する", class: :form__btn  %>
+      </div>
+<% end %>

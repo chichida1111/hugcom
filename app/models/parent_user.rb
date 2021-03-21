@@ -5,12 +5,11 @@ class ParentUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
                   
   has_one  :contact
+  has_many :parent_messages
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :group
 
-         
-         
 
   with_options presence: true do
     validates :email
