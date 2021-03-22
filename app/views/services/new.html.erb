@@ -1,19 +1,33 @@
 <%= form_with(model:[@contact, @service] , local: true) do |f| %>
-<div>
-<%= f.collection_select(:service_type_id, ServiceType.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
-</div>
-<div>
-<%= f.collection_select(:unit_price_id, UnitPrice.all, :id, :unit_price, {}, {class:"select-box", id:"item-category"}) %>
-</div>
-<div class="field">
-  <%= f.label :number_of_times, "回数" %><br />
-  <%= f.text_field :number_of_times %>
-</div>
-<div class="field">
-  <%= f.label :teacher_comment, "特記事項" %><br />
-  <%= f.text_field :teacher_comment %>
-</div>
-<div class="actions">
-  <%= f.submit "決済をお願いする", class: :form__btn  %>
-</div>
+
+<% if @service.errors.any? %>
+ <div class="error-alert">
+  <ul>
+    <% @service.errors.full_messages.each do |message| %>
+    <li class='error-message'><%= message %></li>
+    <% end %>
+  </ul>
+ </div>
+<% end %>
+
+  <div>
+   <%= f.label :ervice_type_id, "決済項目" %><br />
+   <%= f.collection_select(:service_type_id, ServiceType.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+  </div>
+  <div>
+   <%= f.label :ervice_type_id, "単価" %><br />
+   <%= f.collection_select(:unit_price_id, UnitPrice.all, :id, :unit_price, {}, {class:"select-box", id:"item-category"}) %>
+  </div>
+  <div class="field">
+   <%= f.label :number_of_times, "回数" %><br />
+   <%= f.text_field :number_of_times %>
+  </div>
+  <div class="field">
+   <%= f.label :teacher_comment, "特記事項" %><br />
+   <%= f.text_field :teacher_comment %>
+  </div>
+  <div class="actions">
+   <%= f.submit "決済をお願いする", class: :form__btn  %>
+  </div>
+
 <% end %>

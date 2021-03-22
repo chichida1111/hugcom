@@ -7,12 +7,12 @@ class ServicesController < ApplicationController
   end
 
   def create
-    @contact = Contact.find(params[:contact_id])
     @service = Service.create(service_params)
+    @contact = Contact.find(params[:contact_id])
     if @service.save
       redirect_to contact_path(@contact.id), method: :get
     else
-      redirect_to root_path
+      render :new
     end
   end
 

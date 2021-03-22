@@ -4,6 +4,10 @@
         <%= image_tag @contact.image, size: "350x350" %>
 </div>
 
+<div class="prototype__image">
+        <%= "保護者:#{@contact.parent_user.last_name_p_j}#{@contact.parent_user.first_name_p_j}さん" %>
+</div>
+
 
   <% if parent_user_signed_in? && current_parent_user.id == @contact.parent_user_id %>
      <div class="prototype__manage">
@@ -18,7 +22,7 @@
     <%= render partial: "teacher_messages/form" %>
     <%= link_to(new_contact_service_path(@contact.id), class: 'purchase-btn') do %>
       <span class='purchase-btn-text'>精算をお願いする</span>
-    <%= image_tag 'KOSODATE_logo.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+    <%= image_tag 'KOSODATE_logo.png' , size: '50x50' ,class: "purchase-btn-icon" %>
     <% end %>
   <% end %> 
 
@@ -31,12 +35,12 @@
      <%= "#{service.unit_price.unit_price}円" %>
      <%= "#{service.number_of_times}回" %>
      <%= "総額#{service.unit_price.unit_price * service.number_of_times}円" %>
-   <%# もしitem_orderテーブルに保存されていたら %>
+   <%# もしservice_orderテーブルに保存されていたら %>
    <% if service.service_order != nil %> 
      <div class='settlement'>
        <b>決済済です</b>
      </div>
-   <% else %> 
+   <% elsif parent_user_signed_in? %> 
      <%= link_to '決済する', order_service_path(service.id), method: :post %>
   <% end %> 
    </p>

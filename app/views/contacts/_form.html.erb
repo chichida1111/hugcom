@@ -1,7 +1,7 @@
 <%= form_with(model: @contact, local: true) do |f|%>
 
  <div class="field">
-    <%= f.label :group_id, "お子さんのクラス" %><br />
+    <%= f.label :group_id, "お子さんの組" %><br />
    <%= f.collection_select(:group_id, Group.all, :id, :name, {}, {class:"select-box", id:"class"}) %>
   </div>
 

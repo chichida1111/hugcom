@@ -1,0 +1,37 @@
+ja:
+ activerecord:
+   attributes:
+     parent_user:
+       email: Eメール
+       password_confirmation: パスワード（再入力）
+       password: パスワード
+       last_name_p_j: 保護者の名字（漢字・ひらがな・カタカナ）
+       first_name_p_j: 保護者の名前（漢字・ひらがな・カタカナ）
+       last_name_p_k: 保護者の名字（カナ）
+       first_name_p_k: 保護者の名前（カナ）
+       phone_number: 電話番号
+       group_id: お子さんの組
+     teacher_user:
+       email: Eメール
+       encrypted_password: パスワード（再入力）
+       password_confirmation: パスワード（再入力）
+       password: パスワード
+       last_name_t_j: 先生の名字（漢字・ひらがな・カタカナ）
+       first_name_t_j: 先生の名前（漢字・ひらがな・カタカナ）
+       last_name_t_k: 先生の名字（カナ）
+       first_name_t_k: 先生の名前（カナ）
+       group_id: 担当の組
+     contact:
+       image: 写真
+       last_name_c_j: お子さんの名字（漢字・ひらがな・カタカナ）
+       first_name_c_j: お子さんの名前（漢字・ひらがな・カタカナ）
+       last_name_c_k: お子さんの名字（カナ）
+       first_name_c_k: お子さんの名前（カナ）
+       group_id: お子さんの組
+       parent_user: 保護者
+     service:
+       service_type_id: 決済項目
+       unit_price_id: 単価
+       number_of_times: 回数
+       teacher_user: 保護者
+       contact: 連絡帳
