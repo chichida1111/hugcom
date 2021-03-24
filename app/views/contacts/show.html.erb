@@ -1,22 +1,35 @@
-<%=  "#{@contact.last_name_c_j}#{@contact.first_name_c_j}ちゃんのページ" %>
+<%= render "shared/header" %>
 
- <div class="prototype__image">
+
+<div class="contact-show">
+
+
+
+   <div class="name_c_contact-owner">
+     <%=  "#{@contact.last_name_c_j}#{@contact.first_name_c_j}ちゃんのページ" %>
+   </div>
+
+
+  <div class="contact-top">
+
+
+      <div class="contact-image">
         <%= image_tag @contact.image, size: "350x350" %>
-</div>
+   </div>
+   <div class="name_p_contact-owner">
+      <%= "保護者:#{@contact.parent_user.last_name_p_j}#{@contact.parent_user.first_name_p_j}さん" %>
+   </div>
 
-<div class="prototype__image">
-        <%= "保護者:#{@contact.parent_user.last_name_p_j}#{@contact.parent_user.first_name_p_j}さん" %>
-</div>
+      <% if parent_user_signed_in? && current_parent_user.id == @contact.parent_user_id %>
+       <%= link_to "連絡帳を編集する", edit_contact_path(@contact.id), class: :contact_edit_btn %>
+       <%= link_to "連絡帳を削除する", contact_path(@contact.id), method: :delete, class: :contact_delete_btn %>
+     <% end %> 
 
+  </div>
 
-  <% if parent_user_signed_in? && current_parent_user.id == @contact.parent_user_id %>
-     <div class="prototype__manage">
-       <%= link_to "連絡帳を編集する", edit_contact_path(@contact.id), class: :prototype__btn %>
-       <%= link_to "連絡帳を削除する", contact_path(@contact.id), method: :delete, class: :prototype__btn %>
-     </div>
-     <%= render partial: "parent_messages/form" %>
-  <% end %> 
-
+      <% if parent_user_signed_in? && current_parent_user.id == @contact.parent_user_id %>
+       <%= render partial: "parent_messages/form" %>
+     <% end %> 
 
  <% if teacher_user_signed_in? %>
     <%= render partial: "teacher_messages/form" %>
@@ -38,7 +51,7 @@
    <%# もしservice_orderテーブルに保存されていたら %>
    <% if service.service_order != nil %> 
      <div class='settlement'>
-       <b>決済済です</b>
+       <b>決済は完了してます</b>
      </div>
    <% elsif parent_user_signed_in? %> 
      <%= link_to '決済する', order_service_path(service.id), method: :post %>
@@ -46,7 +59,10 @@
    </p>
   <% end %>
 </li>
-<li class="comments_list">
+
+
+<li class="parent_messages">
+<h1>保護者のメッセージ</h1>
   <% @parent_messages.each do |parent_message| %>
     <p> 
      <%= parent_message.created_at.to_s(:datetime_jp) %>
@@ -54,20 +70,28 @@
      <%= parent_message.body_temperature.name %>
      <%= parent_message.pick_up_time.name %>
      <%= parent_message.pick_up_person.name %>
+     <%= parent_message.parent_comment %>
    </p>
   <% end %>
 </li>
-<li class="comments_list">
+<li class="teacher_messages">
+<h1>先生のメッセージ</h1>
   <% @teacher_messages.each do |teacher_message| %>
     <p> 
      <%= teacher_message.created_at.to_s(:datetime_jp) %>
      <%= teacher_message.physical_condition.name %> 
      <%= teacher_message.school_lunch.name %>
      <%= teacher_message.defecation.name %>
+     <%= teacher_message.teacher_comment %>
      <div>
-     <%= image_tag teacher_message.image, size: "350x350", class: 'teacher_message-image' if teacher_message.image.attached? %>
+     <%= image_tag teacher_message.image, size: "100x100", class: 'teacher_message-image' if teacher_message.image.attached? %>
      </div>
    </p>
   <% end %>
 </li>
+
 <% end %>
+
+</div>
+
+<%= render "shared/footer" %>

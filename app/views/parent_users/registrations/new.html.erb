@@ -1,4 +1,6 @@
-+<h2>保護者　新規登録画面</h2>
+<%= render "shared/header" %>
+
+<h2>保護者　新規登録画面</h2>
 
 <%= form_with model: @parent_user, url: parent_user_registration_path, metod: :post, local: true do |f| %>
 

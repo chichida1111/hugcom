@@ -6,7 +6,7 @@ class ParentUser < ApplicationRecord
                   
   has_one  :contact
   has_many :parent_messages
-  has_one :card, dependent: :destroy
+  has_one :card
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :group

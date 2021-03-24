@@ -1,0 +1,25 @@
+<div class="header">
+
+ <div class="hedder-logo"><%= link_to image_tag("logo_1.png"), root_path  %></div>
+
+ <div class="top">
+
+  <div class="hedder_parent_user_signed_in" >
+    <%if parent_user_signed_in?%>
+      <div class="log_in_parent_user" ><%= "#{current_parent_user.last_name_p_j}#{current_parent_user.first_name_p_j}さんとしてログインしています" %></div>
+      <%= button_to "ログアウト", destroy_parent_user_session_path, method: :delete, class: "btn-hedder_parent_user_signed_in" %>
+      <%= button_to "新しく連絡帳をつくる", new_contact_path, method: :get, class: "btn-hedder_parent_user_signed_in" %>
+    <% else %>
+      <h3>こんにちは！ハグコム保育園です</h3>
+    <% end %>
+  </div>
+
+  <div class="hedder_teacher_user_signed_in" >
+    <%if teacher_user_signed_in?%>
+     <div class="log_in_teacher_user" ><%= "#{current_teacher_user.last_name_t_j}#{current_teacher_user.first_name_t_j}先生としてログインしています" %></div>
+     <%= button_to "ログアウト", destroy_teacher_user_session_path, method: :delete, class: "btn-hedder_teacher_user_signed_in" %>
+    <% end %>
+  </div>
+
+ </div>
+</div>

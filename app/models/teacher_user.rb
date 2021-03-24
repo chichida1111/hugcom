@@ -5,7 +5,7 @@ class TeacherUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :teacher_messages
-  has_many :services
+  has_many :services, dependent: :destroy
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :group

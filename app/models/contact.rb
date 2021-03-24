@@ -4,7 +4,7 @@ class Contact < ApplicationRecord
   has_one_attached :image
   has_many :parent_messages, dependent: :destroy
   has_many :teacher_messages, dependent: :destroy
-  has_one :service
+  has_one :service, dependent: :destroy
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :group

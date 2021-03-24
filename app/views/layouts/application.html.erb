@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hugcom</title>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,28 +12,7 @@
 
   <body>
      <header>
-   <%if parent_user_signed_in?%>
-    <div class="nav__right">
-      <%= link_to "保護者 ログアウト", destroy_parent_user_session_path, method: :delete, class: :nav__btn %>
-      <%= link_to "連絡帳を作る", new_contact_path, class: :nav__btn %>
-    </div>
-    <% else %>
-    <div class="nav__right">
-      <%= link_to "保護者 ログイン", new_parent_user_session_path, class: :nav__btn %>
-      <%= link_to "保護者 新規登録", new_parent_user_registration_path, class: :nav__btn %>
-    </div>
-    <% end %>
-    
-    <%if teacher_user_signed_in?%>
-      <div class="nav__right">
-        <%= link_to "先生 ログアウト", destroy_teacher_user_session_path, method: :delete, class: :nav__btn %>
-      </div>
-    <% else %>
-    <div class="nav__right">
-        <%= link_to "先生 ログイン", new_teacher_user_session_path, class: :nav__btn %>
-        <%= link_to "先生 新規登録", new_teacher_user_registration_path, class: :nav__btn %>
-    </div>
-    <% end %>
+  
 
    </header>
     <%= yield %>

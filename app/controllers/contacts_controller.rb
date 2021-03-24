@@ -9,6 +9,7 @@ before_action :parent_user_of_contact?, only: [:edit, :update, :destroy ]
 
   def index
     @contacts = Contact.all
+    # @contact = Contact.where(parent_user_id: current_parent_user.id)
   end
   
   def edit
@@ -24,10 +25,10 @@ before_action :parent_user_of_contact?, only: [:edit, :update, :destroy ]
 
   def show
     @parent_message = ParentMessage.new
-    @parent_messages = @contact.parent_messages.order(id: :DESC)
+    @parent_messages = @contact.parent_messages.order(created_at: :desc).limit(5)
     @teacher_message = TeacherMessage.new
-    @teacher_messages = @contact.teacher_messages.order(id: :DESC)
-    @services = Service.all
+    @teacher_messages = @contact.teacher_messages.order(created_at: :desc).limit(5)
+    @services = Service.all.where(contact_id: @contact.id)
   end
 
   def new

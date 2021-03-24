@@ -2,7 +2,7 @@ class Service < ApplicationRecord
 
   belongs_to :contact
   belongs_to :teacher_user
-  has_one :service_order
+  has_one :service_order, dependent: :destroy
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :service_type

@@ -4,8 +4,8 @@ class DeviseCreateParentUsers < ActiveRecord::Migration[6.0]
   def change
     create_table :parent_users do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      t.string  :email,              null: false
+      t.string  :encrypted_password, null: false, unique: true
       t.string  :phone_number,       null: false
       t.string  :last_name_p_j,      null: false
       t.string  :first_name_p_j,     null: false
