@@ -1,6 +1,6 @@
 class Service < ApplicationRecord
 
-  belongs_to :contact
+  belongs_to :contact, dependent: :destroy
   belongs_to :teacher_user
   has_one :service_order, dependent: :destroy
 

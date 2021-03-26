@@ -1,11 +1,29 @@
+.wrapper{
+  min-height: 100vh;/*①高さの最小値*/
+  position: relative;/*②相対位置*/
+}
+
+.footer-all {
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: -500px;/*フッターの高さと等しいネガティブマージン*/
+}
+
+.push {
+  height: 500px;/*フッターと同じ高さに指定*/
+}
+
 .ad-footer-contents {
   width: 100vw;
-  background-image: image-url('hugcom-footer.jpg');
-  background-size: auto auto;
-  background-position: top center;
+  background-image: image-url('footer.jpg');
+  background-size: 100vw;
+  background-position: top left;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   justify-content: center;
   padding: 5vh 15vw;
   color: #fff;

@@ -1,97 +1,97 @@
 <%= render "shared/header" %>
+      
+<div class="contact-show-title">
+ <%= "#{@contact.last_name_c_j}#{@contact.first_name_c_j}ちゃんの連絡帳" %>
+ </div>
 
-
-<div class="contact-show">
-
-
-
-   <div class="name_c_contact-owner">
-     <%=  "#{@contact.last_name_c_j}#{@contact.first_name_c_j}ちゃんのページ" %>
-   </div>
-
-
-  <div class="contact-top">
-
-
-      <div class="contact-image">
-        <%= image_tag @contact.image, size: "350x350" %>
-   </div>
-   <div class="name_p_contact-owner">
-      <%= "保護者:#{@contact.parent_user.last_name_p_j}#{@contact.parent_user.first_name_p_j}さん" %>
-   </div>
-
-      <% if parent_user_signed_in? && current_parent_user.id == @contact.parent_user_id %>
-       <%= link_to "連絡帳を編集する", edit_contact_path(@contact.id), class: :contact_edit_btn %>
-       <%= link_to "連絡帳を削除する", contact_path(@contact.id), method: :delete, class: :contact_delete_btn %>
-     <% end %> 
-
-  </div>
-
-      <% if parent_user_signed_in? && current_parent_user.id == @contact.parent_user_id %>
-       <%= render partial: "parent_messages/form" %>
-     <% end %> 
-
- <% if teacher_user_signed_in? %>
-    <%= render partial: "teacher_messages/form" %>
-    <%= link_to(new_contact_service_path(@contact.id), class: 'purchase-btn') do %>
-      <span class='purchase-btn-text'>精算をお願いする</span>
-    <%= image_tag 'KOSODATE_logo.png' , size: '50x50' ,class: "purchase-btn-icon" %>
+<div class="contact-show-top">
+  <div class="contact-show-top-left">
+<a class="contact-show-top-left-1-1"><%= "#{@contact.last_name_c_k}#{@contact.first_name_c_k}ちゃん" %></a>
+    <div class="contact-show-top-left-1">
+      <%= image_tag @contact.image, size: "350x350", class: "contact-show-top-left-1-2" %>
+      <a class="contact-show-left-1-3"><%= "保護者:#{@contact.parent_user.last_name_p_j}#{@contact.parent_user.first_name_p_j}さん" %></a>
+    </div>
+    <div class="contact-show-top-left-2">
+    <% if parent_user_signed_in? && current_parent_user.id == @contact.parent_user_id %>
+      <%= button_to "連絡帳を編集する", edit_contact_path(@contact.id), method: :get, class: "contact-show-top-left-2-1" %>
+    <% end %> 
+    <% if parent_user_signed_in? && current_parent_user.id == @contact.parent_user_id && @services.blank? %>
+      <%= button_to "連絡帳を削除する", contact_path(@contact.id), method: :delete, class: "contact-show-top-left-2-2" %> 
     <% end %>
-  <% end %> 
-
-
-  <% if parent_user_signed_in? && current_parent_user.id == @contact.parent_user_id || teacher_user_signed_in? %>
-  <li class="comments_list">
-  <% @services.each do |service| %>
-    <p> 
-     <%= service.service_type.name %>
-     <%= "#{service.unit_price.unit_price}円" %>
-     <%= "#{service.number_of_times}回" %>
-     <%= "総額#{service.unit_price.unit_price * service.number_of_times}円" %>
-   <%# もしservice_orderテーブルに保存されていたら %>
-   <% if service.service_order != nil %> 
-     <div class='settlement'>
-       <b>決済は完了してます</b>
-     </div>
-   <% elsif parent_user_signed_in? %> 
-     <%= link_to '決済する', order_service_path(service.id), method: :post %>
-  <% end %> 
-   </p>
-  <% end %>
-</li>
-
-
-<li class="parent_messages">
-<h1>保護者のメッセージ</h1>
-  <% @parent_messages.each do |parent_message| %>
-    <p> 
-     <%= parent_message.created_at.to_s(:datetime_jp) %>
-     <%= parent_message.attendance.name %> 
-     <%= parent_message.body_temperature.name %>
-     <%= parent_message.pick_up_time.name %>
-     <%= parent_message.pick_up_person.name %>
-     <%= parent_message.parent_comment %>
-   </p>
-  <% end %>
-</li>
-<li class="teacher_messages">
-<h1>先生のメッセージ</h1>
-  <% @teacher_messages.each do |teacher_message| %>
-    <p> 
-     <%= teacher_message.created_at.to_s(:datetime_jp) %>
-     <%= teacher_message.physical_condition.name %> 
-     <%= teacher_message.school_lunch.name %>
-     <%= teacher_message.defecation.name %>
-     <%= teacher_message.teacher_comment %>
-     <div>
-     <%= image_tag teacher_message.image, size: "100x100", class: 'teacher_message-image' if teacher_message.image.attached? %>
-     </div>
-   </p>
-  <% end %>
-</li>
-
-<% end %>
-
+    </div> 
+  </div>
+  <div class="contact-show-top-right">
+    <% if parent_user_signed_in? && current_parent_user.id == @contact.parent_user_id || teacher_user_signed_in? %>
+     <h1 class="contact-show-top-right-1">決済項目</h1>
+      <li class="contact-show-top-right-2">
+        <% @services.each do |service| %>
+          <p class="contact-show-top-right-3"> 
+          <%= service.service_type.name %>
+          <%= "#{service.unit_price.unit_price}円" %>
+          <%= "#{service.number_of_times}回" %>
+          <%= "総額#{service.unit_price.unit_price * service.number_of_times}円" %>
+          <%= service.teacher_comment %>
+            <% if service.service_order != nil %> 
+              <b>決済は完了してます</b>
+            <% elsif parent_user_signed_in? %> 
+              <%= link_to '決済する', order_service_path(service.id), method: :post %>
+            <% end %> 
+        </p>
+        <% end %>
+      </li>
+      <%else%>
+      <h1 class="contact-show-top-right-4">お友達の顔と名前を覚えましょう！</h1>
+     <% end %>
+  </div>
 </div>
+<% if parent_user_signed_in? && current_parent_user.id == @contact.parent_user_id || teacher_user_signed_in?%>
+<div class="contact-show-middle-1">
+  <div class="contact-show-middle-1-left">
+   <% if parent_user_signed_in? && current_parent_user.id == @contact.parent_user_id %>
+     <%= render partial: "parent_messages/form" %>
+    <% end %>
+    <% if teacher_user_signed_in? %>
+        <%= render partial: "teacher_messages/form" %>
+     <% end %> 
+  </div>
+  <% if teacher_user_signed_in? %>     
+    <div class="contact-show-middle-1-right">
+        <h1 class="contact-show-middle-1-right-1">決済依頼</h1>
+        <a class="contact-show-middle-1-right-2">決済項目を確認の上、決済依頼が未対応の場合、決済依頼フォームから依頼を行ってください</a>
+        <%= button_to "決済依頼フォームへいく", new_contact_service_path(@contact.id), method: :get, class: "contact-show-middle-1-right-3" %>
+    </div>
+  <% end %>
+</div>
+<% end %>
+<% if parent_user_signed_in? && current_parent_user.id == @contact.parent_user_id || teacher_user_signed_in?%>
+<div class="contact-show-middle-2">
+    <h1 class="contact-show-middle-2-1">保護者のメッセージ</h1>
+      <% @parent_messages.each do |parent_message| %>
+        <p class="contact-show-middle-2-2"> 
+        <%= parent_message.created_at.to_s(:datetime_jp) %>
+        <%= parent_message.attendance.name %> 
+        <%= parent_message.body_temperature.name %>
+        <%= parent_message.pick_up_time.name %>
+        <%= parent_message.pick_up_person.name %>
+        <%= parent_message.parent_comment %>
+      </p>
+      <% end %>
+</div>
+<div class="contact-show-middle-3">
+  <h1 class="contact-show-middle-3-1">先生のメッセージ</h1>
+    <% @teacher_messages.each do |teacher_message| %>
+      <p class="contact-show-middle-3-2">
+      <%= teacher_message.created_at.to_s(:datetime_jp) %>
+      <%= teacher_message.physical_condition.name %> 
+      <%= teacher_message.school_lunch.name %>
+      <%= teacher_message.defecation.name %>
+      <%= teacher_message.teacher_comment %>
+      <div>
+      <%= image_tag teacher_message.image, size: "100x100", class: "contact-show-middle-3-2" if teacher_message.image.attached? %>
+      </div>
+    </p>
+    <% end %>
+</div>
+<% end %>
 
 <%= render "shared/footer" %>

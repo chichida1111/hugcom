@@ -1,8 +1,9 @@
-<div>
-<%= link_to image_tag(contact.image, class: :card__img, size: "350x350" ), contact_path(contact.id) %>
+<div class="contact-same_group-all">
+<div class="contact-image_c">
+<%= link_to image_tag(contact.image, size: "350x350" ), contact_path(contact.id) %>
 </div>
 
-<div>
- <%= link_to "#{contact.last_name_c_j}#{contact.first_name_c_j}ちゃんの連絡帳", contact_path(contact.id) , class: :card__user %>
+<div class="contact-name_c">
+ <%= link_to "#{contact.last_name_c_j}#{contact.first_name_c_j}ちゃん", contact_path(contact.id)  %>
 </div>
-    
+</div>

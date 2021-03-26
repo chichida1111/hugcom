@@ -8,8 +8,12 @@ before_action :parent_user_of_contact?, only: [:edit, :update, :destroy ]
   end
 
   def index
-    @contacts = Contact.all
-    # @contact = Contact.where(parent_user_id: current_parent_user.id)
+    if parent_user_signed_in?
+     @contact = Contact.all.where(parent_user_id: current_parent_user.id)
+     @contacts = Contact.all.where(group_id: current_parent_user.group_id).where.not(parent_user_id: current_parent_user.id)
+    elsif teacher_user_signed_in?
+     @contacts = Contact.all.where(group_id: current_teacher_user.group_id)
+    end
   end
   
   def edit

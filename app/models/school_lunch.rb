@@ -3,7 +3,8 @@ class SchoolLunch < ActiveHash::Base
     { id: 1, name: '全部、食べられました' },
     { id: 2, name: '全部、食べて、おかわりもしました' },
     { id: 3, name: '少し残してしまいました' },
-    { id: 4, name: 'ほとんど食べれませんでした' }
+    { id: 4, name: 'ほとんど食べれませんでした' },
+    { id: 5, name: '' }
   ]
 
   include ActiveHash::Associations

@@ -1,34 +1,47 @@
 <%= render "shared/header" %>
 
-<div class="sign_in">
-<% if parent_user_signed_in? || teacher_user_signed_in? %>
- <%= render partial: 'contact', collection: @contacts %>
-<% else %>
-<div class="parent_user_signed_in">
- <h1>保護者はこちらから</h1>
-  <%= button_to "ログイン", new_parent_user_session_path, class: "btn-parent_user_signed_in" %>
-  <h3>初めて利用される場合は新規登録をお願いします</h3>
-  <%= button_to "新規登録", new_parent_user_registration_path, method: :get, class: "btn-parent_user_signed_in" %>
-</div>
-<div class="teacher_user_signed_in">
-  <h1>先生はこちらから</h1>
-  <%= button_to "ログイン", new_teacher_user_session_path, class: "btn-teacher_user_signed_in" %>
-  <h3>初めて利用される場合は新規登録をお願いします</h3>
-  <%= button_to "新規登録", new_teacher_user_registration_path, method: :get, class: "btn-teacher_user_signed_in" %>
- </div>  
+<div class="wrapper">
+    <div class="sign_in">
+        <% if parent_user_signed_in? %>
+          <div class="current_parentuser_c_contact">
+          <%= "#{current_parent_user.last_name_p_j}#{current_parent_user.first_name_p_j}さんが作った連絡帳" %>
+          <%= render partial: 'contact', collection: @contact %>
+          </div>
+              <a class="same_group">同じ組のお友達</a>
+            <div class="same_group_contact">
+              <%= render partial: 'contact', collection: @contacts %>
+              </div>
+        <%elsif teacher_user_signed_in? %>
+            <a class="teacher-same-group"><%= "#{current_teacher_user.last_name_t_j}#{current_teacher_user.first_name_t_j}先生が担当する組の連絡帳" %></a>
+            <div class="same_group_contact">
+            <%= render partial: 'contact', collection: @contacts %>
+            </div>
+        <% else %>
+        <div class="not_sign"> 
+          <div class="parent_user_not_signed_in">
+            <h1>保護者はこちらから</h1>
+              <%= button_to "ログイン", new_parent_user_session_path, class: "btn-parent_user_signed_in" %>
+              <h3>初めて利用される場合は新規登録をお願いします</h3>
+              <%= button_to "新規登録", new_parent_user_registration_path, method: :get, class: "btn-parent_user_signed_in" %>
+          </div>
+          <div class="teacher_user_not_signed_in">
+            <h1>先生はこちらから</h1>
+            <%= button_to "ログイン", new_teacher_user_session_path, class: "btn-teacher_user_signed_in" %>
+            <h3>初めて利用される場合は新規登録をお願いします</h3>
+            <%= button_to "新規登録", new_teacher_user_registration_path, method: :get, class: "btn-teacher_user_signed_in" %>
+          </div>
+        </div>  
+        <% end %>
+    </div>
 
-<% end %>
-</div>
+    <div class="push"></div>
 
-<div class='title-contents' >
-<h1 class= 'service-title'>HugCom</h1>
-<h1 class= 'service-title'>先生と保護者の架け橋</h1>
-    <p class='service-explain'>
-      先生も保護者も簡単に楽しくコミュニケーションが取れます！
-    </p>
-    <p class='service-explain'>
-      保育園の電子版連絡帳です
-    </p>
+      <div class='title-contents' >
+        <h1 class= 'service-title'>HugCom</h1>
+        <h1 class= 'service-title'>先生と保護者の架け橋</h1>
+        <p class='service-explain'>先生も保護者も簡単に楽しくコミュニケーションが取れます！</p>
+        <p class='service-explain'>保育園の電子版連絡帳です</p>
+      </div>
 </div>
 
 <%= render "shared/footer" %>

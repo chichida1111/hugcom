@@ -1,11 +1,46 @@
 .sign_in{
   height: 60vh;
   text-align:center;
-  display: flex;
-  justify-content: space-around;
 }
 
-.parent_user_signed_in{
+.current_parentuser_c_contact{
+  margin: 50px;
+  
+}
+
+.same_group {
+ font-size: 30px;
+}
+
+.same_group_contact {
+ display: flex;
+
+}
+
+.teacher-same-group{
+ font-size: 40px;
+ max-width: 40px;
+}
+
+// 部分テンプレートcontacts/_contact.html.erb
+.contact-same_group-all {
+  display: flex;
+  flex-direction: column-reverse;
+  margin: 20px;
+}
+
+.contact-image_c{
+}
+
+.contact-name_c_{
+}
+// 部分テンプレートcontacts/_contact.html.erb
+
+.not_sign {
+  display: flex;
+}
+
+.parent_user_not_signed_in{
   width: 40vw;
   margin: 30px;
   padding: 30px;
@@ -36,7 +71,7 @@
   color: gray;
 }
 
-.teacher_user_signed_in {
+.teacher_user_not_signed_in {
   width: 40vw;
   margin: 30px;
   padding: 30px;
@@ -71,7 +106,6 @@
   width: 100vw;
   background-image: image-url('logo_2.png');
   background-size:  auto;
-  background-repeat: no-repeat;
   background-position: center;
   display: flex;
   flex-direction: column;
@@ -80,6 +114,9 @@
   color: #fff;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
 }
+
+
+// 連絡帳より下部のトップページ
 
 .service-title {
   font-size: 8vh;

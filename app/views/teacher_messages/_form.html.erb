@@ -1,4 +1,7 @@
 <%= form_with(model:[@contact, @teacher_message] , local: true) do |f| %> 
+
+<h1>先生のメッセージ作成フォーム</h1>
+
         <div class="field">
           <%= f.label :physical_condition_id, "体調" %><br />
           <%= f.collection_select(:physical_condition_id, PhysicalCondition.all, :id, :name, {}, {class:"select-box", id:"class"}) %>
