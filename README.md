@@ -52,13 +52,21 @@ https://hugcom.herokuapp.com/
 ・先生ユーザーは写真も投稿できるようになっています
 
 # 実装した機能についてのGIFと説明
-
+- ユーザー登録機能
+![63c5bfb4658c701386c7bac3f1fdace1](https://user-images.githubusercontent.com/78330230/112745703-5e75e700-8fe5-11eb-829d-db57dc30dacc.gif)
+- 決済機能
+![3d183c3a3ea2f2b70bc8e6de82eafd9f](https://user-images.githubusercontent.com/78330230/112745779-ccbaa980-8fe5-11eb-8e83-1e3b0765e17a.gif)
+- メッセージ投稿機能
+![e8055d1b4a030072a740116b56747baf](https://user-images.githubusercontent.com/78330230/112745830-36d34e80-8fe6-11eb-8693-65b0bc5d3da4.gif)
 
 # 実装予定の機能
 - メッセージの非同期通信
 - 写真を複数枚投稿
 
 # データベース設計
+- ER図
+<img width="834" alt="スクリーンショット 2021-03-28 16 44 28" src="https://user-images.githubusercontent.com/78330230/112745643-f7f0c900-8fe4-11eb-8fd1-5546c5ad675c.png">
+
 ## parent_users テーブル
 
 | Column             | Type    | Options                   |
@@ -199,3 +207,35 @@ https://hugcom.herokuapp.com/
 - belongs_to :parent_user
 
 # ローカルでの動作方法
+% git clone https://github.com/chichida1111/hugcom
+% cd hugcom
+% bundle install
+% yarn install
+% rails db:create
+% rails db:migrate
+% rails s
+- パッケージ
+node,yarn
+- Rubyのバージョン
+ruby 2.6.5
+rails 6.0.0
+
+# 開発環境
+- バックエンド
+Ruby,Ruby on Rails
+- フロントエンド
+html,scss,JavaScript
+- データベース
+MySQL,SequelPro
+- インフラ
+AWS
+- Webサーバ（本番環境）
+Nginx
+- アプリケーションサーバ（本番環境）
+Unicorn
+- ソース管理
+GitHub,GitHubDesktop
+- テスト
+RSpec
+- エディタ
+VSCode
