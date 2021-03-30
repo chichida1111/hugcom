@@ -229,10 +229,6 @@ html,scss,JavaScript
 MySQL,SequelPro  
 - インフラ  
 AWS  
-- Webサーバ（本番環境）  
-Nginx  
-- アプリケーションサーバ（本番環境）  
-Unicorn  
 - ソース管理  
 GitHub,GitHubDesktop  
 - テスト  
