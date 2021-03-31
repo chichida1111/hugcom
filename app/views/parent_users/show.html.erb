@@ -1,3 +1,5 @@
+<%= render "shared/header" %>
+
 <div class="AccountPage">
   <div class="AccountPage__title">
     <h1>マイページ</h1>
@@ -94,7 +96,9 @@
        <br>
    <%= link_to "ログアウト", destroy_parent_user_session_path, method: :delete%>
    <br>
-   <%= link_to "商品一覧へ戻る", root_path%>
+   <%= link_to "トップページへ戻る", root_path%>
 
   </div>
 </div>
+
+<%= render "shared/footer" %>
