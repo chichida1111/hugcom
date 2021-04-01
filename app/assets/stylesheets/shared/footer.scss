@@ -19,9 +19,9 @@
   width: 100vw;
   background-image: image-url('footer.jpg');
   background-size: 100vw;
-  background-position: top left;
+  // background-position: top left;
   background-repeat: no-repeat;
-  padding: 5vh 15vw;
+  padding: 5vh 0;
   color: #fff;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
 }
@@ -29,16 +29,19 @@
 .ad-footer-title {
   font-size: 4vh;
   margin-bottom: 2vh;
+  width: 50vw;
 }
 
 .ad-footer-explain {
   font-size: 3vh;
   line-height: 30px;
+  width: 50vw;
 }
 
 .store-btn {
   display: flex;
   margin-top: 24px;
+  width: 50vw;
 }
 
 .apple-btn {
