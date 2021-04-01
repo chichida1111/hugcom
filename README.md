@@ -17,6 +17,10 @@ Eメール:te1@te
 - Basic認証  
 user:kosodate_test_user  
 password:kosodate55ck  
+- カード情報  
+カード番号:4242424242424242（16桁）  
+CVC:123  
+有効期限:登録時より未来  
 
 # 利用方法
 - 保護者  
