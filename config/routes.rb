@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'teacher_users/show'
   root to: "contacts#index"
 
   devise_for :parent_users, controllers: {
@@ -29,6 +30,8 @@ Rails.application.routes.draw do
   end
 
   resources :parent_users, :only => [:show, :update]
+
+  resources :teacher_users, :only => [:show, :update]
 
   resources :cards, only: [:new, :create]
 

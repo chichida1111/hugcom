@@ -11,18 +11,17 @@ class ParentUsersController < ApplicationController
   end
 
   def update
-    if current_parent_user.update(parent_user_params) # 更新出来たかを条件分岐する
-      redirect_to root_path # 更新できたらrootパスへ
+    if current_parent_user.update(parent_user_params)
+      redirect_to root_path
     else
-      redirect_to "show" # 失敗すれば再度マイページへ
+      redirect_to "show"
     end
   end
 
   private
 
   def parent_user_params
-    params.require(:parent_user).permit(:email, :last_name_p_j,:first_name_p_j,:last_name_p_k,:first_name_p_k,:group_id) 
-    # 編集出来る情報を制限
+    params.require(:parent_user).permit(:email, :last_name_p_j,:first_name_p_j,:last_name_p_k,:first_name_p_k,:group_id)
   end
 
 end

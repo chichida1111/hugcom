@@ -1,0 +1,74 @@
+<%= render "shared/header" %> 
+ 
+ <div class="Account__info">
+    <h2>現在、登録されているユーザー情報</h2>
+    <h5>※更新したい場合は、該当箇所を修正の上、「更新する」のボタンを押してください</h5>
+  </div>
+  <div class="AccountPage__form">
+    <%= form_for(current_teacher_user) do |f| %>
+      <div class="FormField">
+        <div class="FormField__email">
+          <%= f.label :Eメール %>
+        </div>
+        <div class="FormField__email">
+          <%= f.email_field :email %>
+        </div>
+      </div>
+      
+      <div class="FormField">
+        <div class="FormField__name">
+          <%= f.label :名字（漢字） %>
+        </div>
+        <div class="FormField__name">
+          <%= f.text_field :last_name_t_j, autofocus: true %>
+        </div>
+      </div>
+
+      <div class="FormField">
+        <div class="FormField__name">
+          <%= f.label :名前（漢字） %>
+        </div>
+        <div class="FormField__name">
+          <%= f.text_field :first_name_t_j, autofocus: true %>
+        </div>
+      </div>
+
+      <div class="FormField">
+        <div class="FormField__name">
+          <%= f.label :名字（カタカナ） %>
+        </div>
+        <div class="FormField__name">
+          <%= f.text_field :last_name_t_k, autofocus: true %>
+        </div>
+      </div>
+
+      <div class="FormField">
+        <div class="FormField__name">
+          <%= f.label :名前（カタカナ） %>
+        </div>
+        <div class="FormField__name">
+          <%= f.text_field :first_name_t_k, autofocus: true %>
+        </div>
+      </div>
+
+     <div class="FormField">
+        <div class="FormField__group">
+          <%= f.label :組 %>
+        </div>
+        <div class="FormField__group">
+          <%= f.collection_select(:group_id, Group.all, :id, :name, {}, {class:"select-box", id:"class"}) %>
+        </div>
+      </div>
+    
+      <%= f.submit "更新する" %>
+    <% end %>
+
+       <br>
+   <%= link_to "ログアウト", destroy_teacher_user_session_path, method: :delete%>
+   <br>
+   <%= link_to "トップページへ戻る", root_path%>
+
+  </div>
+</div>
+
+<%= render "shared/footer" %>

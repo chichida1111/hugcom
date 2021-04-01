@@ -12,7 +12,7 @@
     <%= button_to "新しく連絡帳をつくる", new_contact_path, method: :get, class: "header-right-2-2" %>
     </div>
     <% elsif teacher_user_signed_in? %>
-    <a class="header-right-3-1"><%= "#{current_teacher_user.last_name_t_j}#{current_teacher_user.first_name_t_j}先生としてログインしています" %></a>
+    <%= button_to "#{current_teacher_user.last_name_t_j}#{current_teacher_user.first_name_t_j}先生としてログインしています", teacher_user_path(current_teacher_user), method: :get, class: "header-right-3-1" %>
     <%= button_to "ログアウト", destroy_teacher_user_session_path, method: :delete, class: "header-right-3-2" %>
     <% else %>
     <h3 class="header-right-4">こんにちは！ハグコム保育園です</h3>
