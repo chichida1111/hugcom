@@ -15,7 +15,7 @@
           <%= f.collection_select(:defecation_id, Defecation.all, :id, :name, {}, {class:"select-box", id:"class"}) %>
         </div>
           <div class="field">
-          <%= f.label :teacher_comment, "特記事項" %><br />
+          <%= f.label :teacher_comment, "今日の出来事" %><br />
           <%= f.text_field :teacher_comment %>
         </div>
         <div class="field">

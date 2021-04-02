@@ -19,8 +19,8 @@
           <%= f.label :pick_up_person_id, "お迎えの人" %><br />
           <%= f.collection_select(:pick_up_person_id, PickUpPerson.all, :id, :name, {}, {class:"select-box", id:"class"}) %>
         </div>
-        <div class="field">
-          <%= f.label :parent_comment, "特記事項" %><br />
+        <div class="field_comment">
+          <%= f.label :parent_comment, "お伝えしたいこと" %><br />
           <%= f.text_field :parent_comment %>
         </div>
         <div class="actions">
